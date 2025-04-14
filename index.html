@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" x-data="portfolioApp()">
+<head>
+    <!-- Lightbox2 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alok Nawani | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+</head>
+<body :class="{ 'dark-mode': darkMode }">
+    <div class="gradient-background"></div>
+
+  <div id="particles-js"></div> <!-- Only one instance of this is needed -->
+
+  <!-- Header Section -->
+  <header>
+    <div class="header-content">
+      <img src="assets/your-professional-photo.jpg" alt="Alok Nawani" class="profile-photo">
+      <h1>Alok Nawani</h1>
+      <p>B.Tech Student | Graphic Era Hill University, Dehradun</p>
+      <blockquote>"The best way to predict the future is to create it." </blockquote>
+    </div>
+  </header>
+
+  
+  <!-- Modal for Zoomed Media -->
+  <div id="mediaModal" class="modal">
+    <span class="close" id="closeModal">&times;</span> <!-- Close button -->
+    <div id="loadingSpinner" class="spinner"></div> <!-- Loading spinner -->
+    <img id="modalImg" class="modal-content" style="display: none;">
+    <video id="modalVideo" class="modal-content" controls style="display: none;"></video>
+    <a id="downloadBtn" class="download-btn" href="#" download>Download</a> <!-- Download button -->
+    <div id="caption"></div>
+</div>
+  
+  
+  
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <template x-for="item in sections">
+      <a :class="{ 'active': current === item.key }" @click="current = item.key" x-text="item.name"></a>
+    </template>
+    <button @click="toggleDarkMode">🌓</button>
+  </nav>
+
+  <!-- Sections -->
+  <main>
+    <template x-for="item in sections">
+      <section x-show="current === item.key" x-transition>
+        <h2 x-text="item.name"></h2>
+        <div class="card">
+          <!-- Use x-html to render HTML tags, like <br> for line breaks -->
+          <p x-html="item.description"></p>
+        </div>
+      </section>
+    </template>
+
+    <section x-show="current === 'personality'" x-transition>
+        <div class="personality-container">
+          <div class="personality-cards">
+            <div class="personality-block">🧑‍🎓 <strong>School Captain:</strong> Responsible for leading the student body and representing their interests.</div>
+            <div class="personality-block">🏆 <strong>Multiple Trophies:</strong> Winner in various competitions, showcasing dedication and excellence.</div>
+            <div class="personality-block">💃 <strong>Dance Leader:</strong> Led performances, motivated the team, and ensured coordination.</div>
+            <div class="personality-block">🗣️ <strong>Debate Captain:</strong> Directed and participated in debates, honing public speaking skills.</div>
+            <div class="personality-block">🤝 <strong>Team Collaboration:</strong> Proven ability to lead, motivate, and collaborate in academics and activities.</div>
+            <div class="personality-block">🎓 <strong>B.Tech Student:</strong> Currently in 2nd year, applying personality in new academic/professional challenges.</div>
+          </div>
+          <img src="assets/personality.jpg" alt="Alok Nawani" class="personality-photo">
+        </div>
+      </section>
+      
+      <section x-show="current === 'profile'" x-transition>
+        <h2>More About Me:</h2>
+        <div class="personality-container">
+          <div class="personality-cards">
+            <div class="personality-block">
+                <strong>›</strong> My name is Alok Nawani. Born in the breathtaking landscapes of Jammu and Kashmir, I carry a deep appreciation for the natural beauty and cultural richness of my homeland. The serene valleys, majestic mountains, and vibrant traditions have shaped my perspective, inspiring my passion for creativity and innovation.<br><br>
+                <strong>›</strong> I am a B.Tech student with a keen interest in web development and digital design. Skilled in Java, HTML, and CSS, I strive to craft immersive, interactive experiences that blend technical precision with artistic expression. With a perfectionist mindset, I continuously refine my designs to enhance engagement and aesthetics.<br><br>
+                <strong>›</strong> My journey in technology is complemented by a love for photography, where I capture the world through my lens, translating moments into visual stories. This passion fuels my creativity and enhances my design sensibility, allowing me to see beauty in every detail.<br><br>
+                <strong>›</strong>  I am also an avid gamer, finding inspiration in the immersive worlds and narratives of video games. This passion for gaming not only fuels my creativity but also sharpens my problem-solving skills, as I navigate complex challenges and collaborate with others in virtual realms.<br><br>             
+                <strong>›</strong> Beyond technology, I find joy in the thrill of sports, with cricket and football fueling my competitive spirit and discipline. Music, too, is an integral part of my life—I enjoy playing the piano and guitar, using melody and rhythm as a means of self-expression.<br><br>
+                <strong>›</strong>  With every project and pursuit, my goal is to seamlessly fuse creativity and functionality, crafting digital experiences that resonate, inspire, and evolve.
+                </div>
+          </div>
+          <img src="assets/more-about-me.jpg" alt="Alok Nawani" class="personality-photo">
+        </div>
+      </section>
+
+      <section x-show="current === 'education'" x-transition>
+        <div class="personality-container">
+          <div class="personality-cards">
+      
+            <!-- College Block -->
+            <div class="personality-row">
+              <div class="personality-block">
+                <h2>College:</h2>
+                I am currently pursuing a Bachelor of Technology (B.Tech) in Computer Science Engineering (CSE) at 
+                <a href="https://www.gehu.ac.in/" target="_blank" rel="noopener noreferrer">
+                  Graphic Era Hill University, Dehradun
+                </a>. Through my coursework, I have developed a strong foundation in programming, web development, and digital design, with proficiency in Java, HTML, and CSS. My academic journey fuels my passion for crafting engaging and innovative digital experiences.
+              </div>
+              <img src="assets/1576563781phpQj94TQ.jpg" alt="Alok Nawani" class="personality-photo">
+                </a>
+            </div>
+      
+            <!-- School Block -->
+            <div class="personality-row">
+              <div class="personality-block">
+                <h2>Schooling:</h2>
+                Prior to this, I completed my schooling at 
+                <a href="https://www.thehimalayanpublicschool.com/" target="_blank" rel="noopener noreferrer">
+                  The Himalayan Public School, Dehradun
+                </a>, where I cultivated a curiosity for technology and creativity, shaping my approach to problem-solving and innovation.
+              </div>
+              <img src="assets/1A18I7736-pojy4abhyxerh2ia8cwqz0c32r8252lgi4fe95w274.jpg" alt="Alok Nawani" class="personality-photo">
+                </a>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+      
+
+      <section x-show="current === 'skills'" x-transition>
+        <div class="skills-container">
+            <!-- Text Section -->
+            <div class="skills-cards">
+                <div class="skills-block">Programming & Web Development – Proficient in Java, HTML, and CSS, with a passion for crafting interactive and visually appealing digital experiences.</div>
+                <div class="skills-block">UI/UX Design – Strong understanding of design principles, focusing on user-friendly and aesthetically refined interfaces.</div>
+                <div class="skills-block">Creative & Analytical Thinking – Blending creativity with problem-solving to develop innovative solutions in web design and development.</div>
+                <div class="skills-block">Sports Enthusiast – Active interest in cricket and football, showcasing teamwork, strategy, and discipline.</div>
+                <div class="skills-block">Photography – Passionate about capturing moments and translating them into visual stories, enhancing my design sensibility.</div>
+                <div class="skills-block">Gaming – Avid gamer, finding inspiration in immersive worlds and narratives, enhancing creativity and problem-solving skills.</div>
+                <div class="skills-block">Musical Skills – Passionate about playing the piano and guitar, exploring melody and rhythm as forms of creative expression.</div>
+                <div class="skills-block">Attention to Detail – A perfectionist approach to design and development, ensuring high-quality and engaging digital experiences.</div>
+                <div class="skills-block">Communication Skills – Strong verbal and written communication abilities, facilitating effective collaboration and engagement.</div>
+            </div>
+    
+            <!-- Image Section -->
+            <div class="skills-images">
+                <img src="assets/skill1.jpg" alt="Skill 1" class="skills-photo">
+                <img src="assets/skill2.jpg" alt="Skill 2" class="skills-photo">
+                <img src="assets/skill3.jpg" alt="Skill 3" class="skills-photo">
+            </div>
+        </div>
+    </section>
+      
+      <section x-show="current === 'projects'" x-transition>
+        <div class="project-scroll-container">
+          <div class="project-track">
+      
+            <!-- Project 1 -->
+            <div class="project-card">
+              <div class="personality-block">
+                <strong>1. Text-to-Speech & Speech-to-Text for Indian Languages (Python)</strong><br>
+                This project focuses on bridging communication gaps by enabling seamless text-to-speech (TTS) and speech-to-text (STT) conversion for multiple Indian languages...<br><br>
+                <em>Key Features:</em><br>
+                - Supports multiple Indian languages for both TTS and STT functionalities.<br>
+                - Optimized Python algorithms for accurate speech recognition and synthesis.<br>
+                - Optimized Python algorithms for accurate speech recognition and synthesis.
+              </div>
+              <img src="assets/project1.jpg" alt="TTS STT Project" class="personality-photo">
+            </div>
+      
+            <!-- Project 2 -->
+            <div class="project-card">
+              <div class="personality-block">
+                <strong>2. E-Portfolio Website (HTML, CSS, JavaScript)</strong><br>
+                Inspired by Spotify’s sleek and modern design, this e-portfolio showcases my skills, projects, and personal branding...<br><br>
+                <em>Key Features:</em><br>
+                - A well-structured “Know More About Me” section displaying my skills and expertise<br>
+                - Custom-built glowing elements and animated UI for an eye-catching design<br>
+                - Responsive layout for smooth navigation across different devices<br>
+              </div>
+              <img src="assets/project2.jpg" alt="Portfolio Website" class="personality-photo">
+            </div>
+      
+            <!-- Project 3 -->
+            <div class="project-card">
+              <div class="personality-block">
+                <strong>3. Agriculture Quiz & Job Learning Platform</strong><br>
+                An educational hub integrating an interactive quiz system about agricultural careers using the Gemini API...<br><br>
+                <em>Key Features:</em><br>
+                - Quiz-based learning module to engage users and assess their knowledge<br>
+                - Career guidance section offering insights into agricultural job roles<br>
+                - Integration with Gemini API to enhance functionality with real-time data
+              </div>
+              <img src="assets/project3.jpg" alt="Agri Quiz Project" class="personality-photo">
+            </div>
+      
+          </div>
+        </div>
+      </section>
+
+      <section x-show="current === 'certificates'" x-transition>      
+        <div class="certificate-scroll-container">
+          <div class="certificate-track">
+            <div class="certificate-card">
+              <img src="assets/cert1.jpg" alt="Certificate 1">
+              <a href="https://www.credly.com/badges/fc3e96a3-3028-4be8-ba15-2c25ae873ef7/whatsapp" 
+                 target="_blank" 
+                 class="text-blue-600 underline mt-2 block text-sm text-center">
+                View Certificate
+              </a>
+            </div>
+            <div class="certificate-card">
+                <img src="assets/cert2.jpg" alt="Certificate 2">
+                <p class="text-sm text-center mt-1">AWS Cloud Practitioner Essentials <br>
+                    - Completion Certificate<br>
+                    - Completed the course with full <br>attention and gained knowledge.</p>
+              </div>
+              
+              <div class="certificate-card">
+                <img src="assets/cert3.jpg" alt="Certificate 3">
+                <p class="text-sm text-center mt-1">RBI Nationwide Quiz Participation <br> - 2024<br>
+                    - Participated in the quiz organized <br>by RBI<br>
+                - The quiz was very interesting<br> and the competition was tough.</p>
+              </div>
+              
+              <div class="certificate-card">
+                <img src="assets/cert4.jpg" alt="Certificate 4">
+                <p class="text-sm text-center mt-1">Certificate in Java Programming<br>
+                    - Completed a comprehensive <br>course on Java programming<br>
+                    - Gained hands-on experience in <br>Java development.</p>   
+                </p>
+              </div>
+              
+              <div class="certificate-card">
+                <img src="assets/cert5.jpg" alt="Certificate 5">
+                <p class="text-sm text-center mt-1">Certificate in Cyber Security<br>
+                    - Completed a course on Cyber <br>Security fundamentals<br>
+                    - Gained knowledge in protecting <br>systems and networks.</p>
+                </p>
+              </div>
+              
+          </div>
+        </div>
+      </section>
+      
+      <section x-show="current === 'contact'" x-transition>
+        <div class="contact-container">
+            <a href="mailto:aloknawani23@gmail.com" target="_blank" class="contact-button">
+                <i class="fas fa-envelope"></i> Gmail
+            </a>
+            <a href="https://github.com/Alok-Nawani" target="_blank" class="contact-button">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" class="contact-button">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://instagram.com/im_alok23" target="_blank" class="contact-button">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+        </div>
+    </section>
+      
+
+        <template x-if="item.key === 'projects'">
+            <div class="card">
+                <h3>Smart Attendance System</h3>
+                <p>Face recognition based system using Python and OpenCV.</p>
+                <video controls>
+                    <source src="path_to_your_video.mp4">
+                </video>
+            </div>
+        </template>
+        
+        <!-- Gallery -->
+        <div class="gallery">
+          <template x-for="(upload, index) in uploads[item.key] || []">
+            <div class="gallery-item card">
+              <button class="delete-btn" @click="deleteUpload(item.key, index)" x-show="isAdmin">&times;</button>
+              <template x-if="upload.type.startsWith('image')">
+                <img :src="upload.url" alt="Image" class="upload-preview">
+              </template>
+              <template x-if="upload.type.startsWith('video')">
+                <video controls class="upload-preview">
+                  <source :src="upload.url">
+                </video>
+              </template>
+              <p x-text="upload.name"></p>
+              <small x-text="upload.description"></small>
+            </div>
+          </template>
+        </div>
+      </section>
+    </template>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Alok Nawani | All rights reserved.</p>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+  <!-- Lightbox2 JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+</body>
+</html>

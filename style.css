@@ -1,0 +1,727 @@
+/* style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .gradient-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg, #ff6a00, #ee0979, #ff7a00, #ff7a00, #4361e6 , #1d498b);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s ease infinite;
+    z-index: -2; /* Ensure the background stays behind the content */
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  body.dark-mode {
+    background-color: #121212;
+    color: #f4f4f4;
+  }
+  
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 4rem 1rem 2rem;
+    background: linear-gradient(135deg, #673ab7, #3f51b5);
+    color: white;
+    animation: fadeInDown 1.2s ease;
+  }
+  
+  .profile-pic {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    margin-bottom: 1rem;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background-color: #512da8;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .navbar a, .navbar button {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .navbar a.active, .navbar a:hover, .navbar button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  main {
+    padding: 3rem 2rem;
+    max-width: 1100px;
+    margin: auto;
+  }
+  
+  section {
+    margin-bottom: 4rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-left: 6px solid #673ab7;
+    padding-left: 1rem;
+  }
+  
+  .card {
+    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+    color:#ee0979;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 1.5rem;
+    padding: 1.5rem 2rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(12px);
+    color: #0e0c0c;
+    animation: fadeInUp 0.6s ease-out both;
+    transition: transform 0.3s ease;
+        /* ...existing styles */
+        border: 2px solid rgba(138, 43, 226, 0.5);
+        box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+      
+  }
+  
+  .card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  body.dark-mode .card {
+    color: #f4f4f4; /* or any readable light shade */
+  }
+  
+  
+  .upload-section input,
+  .upload-section textarea,
+  .upload-section button {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+  }
+  
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .gallery-item {
+    max-width: 220px;
+    position: relative;
+  }
+  
+  .upload-preview {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .delete-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: crimson;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  footer {
+    background-color: #311b92;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+ 
+  
+  #particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensures particles are behind your content */
+  }
+  
+  header {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+  
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  
+  header blockquote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #f5f5f5;
+    margin-top: 1rem;
+    border-left: 4px solid #f5f5f5;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+  
+  .personality-container {
+    display: flex; /* Use flexbox for side-by-side layout */
+    flex-direction: row; /* Align items horizontally */
+    align-items: flex-start; /* Align items at the top */
+    gap: 2rem; /* Add spacing between text and images */
+}
+  
+  .personality-cards {
+    flex: 2;
+  }
+  
+  .personality-block {
+    background: #fff7e6;
+    border: 2px dashed #f2c94c;
+    padding: 1rem;
+    border-radius: 15px;
+    font-family: 'Comic Neue', cursive;
+    color: #333; /* Ensure text is visible in light mode */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.3s, color 0.3s;
+}
+  
+  .personality-block:hover {
+    transform: translateY(-3px);
+  }
+  
+  .personality-photo {
+    flex: 1; /* Take up less space for the image */
+    max-width: 300px; /* Limit the maximum width of the image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+  
+body.dark-mode .personality-block {
+    background: #333; /* Dark background for dark mode */
+    border: 2px dashed #555; /* Adjust border color for dark mode */
+    color: #f4f4f4 !important; /* Light text for dark mode */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Adjust shadow for dark mode */
+}
+  
+  .personality-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .personality-block {
+    flex: 2;
+    font-size: 1rem;
+  }
+  
+  .personality-photo {
+    flex: 1;
+    max-width: 220px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .project-scroll-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 1rem 0;
+    white-space: nowrap;
+  }
+  
+  .project-track {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    width: max-content;
+  }
+  
+  .project-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(138, 43, 226, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.1);
+    padding: 1.5rem;
+    width: 380px; /* ✅ fixed width for consistent layout */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    white-space: normal; /* ✅ allows text to wrap inside the card */
+    color: #333;
+    background: #fff;
+  }
+  
+  .project-card .personality-photo {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .personality-block {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  /* Certificates Section Styles */
+.certificate-scroll-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden;
+    padding: 1rem 0;
+    white-space: nowrap; /* Prevent line breaks */
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem; /* Add spacing between cards */
+}
+
+.certificate-track {
+    display: flex;
+    gap: 2rem; /* Add spacing between certificate cards */
+    padding: 1rem;
+    width: max-content; /* Ensure the track width adjusts to its content */
+}
+
+.certificate-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(138, 43, 226, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.1);
+    padding: 1.5rem;
+    width: 300px; /* Fixed width for consistent layout */
+    flex-shrink: 0; /* Prevent cards from shrinking */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+}
+
+.certificate-card img {
+    width: 100%; /* Make the image responsive */
+    max-width: 250px; /* Limit the maximum width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+}
+
+.certificate-card p, .certificate-card a {
+    font-size: 0.9rem;
+    color: #333; /* Default text color */
+    margin-top: 0.5rem;
+}
+
+body.dark-mode .certificate-card {
+    background-color: #333; /* Dark background for dark mode */
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .certificate-card p, 
+body.dark-mode .certificate-card a {
+    color: #f4f4f4; /* Light text color for dark mode */
+}
+  .personality-photo {
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+  }
+  
+  .personality-photo:hover {
+    transform: scale(1.02);
+  }
+
+  /* Skills Section Styles */
+.skills-container {
+    display: flex; /* Use flexbox for side-by-side layout */
+    flex-direction: row; /* Align text and images horizontally */
+    align-items: flex-start; /* Align items at the top */
+    gap: 2rem; /* Add spacing between text and images */
+}
+
+.skills-cards {
+    flex: 2; /* Take up more space for the text */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Add spacing between text blocks */
+}
+
+.skills-block {
+    background: #fff7e6;
+    border: 2px dashed #f2c94c;
+    padding: 1rem;
+    border-radius: 15px;
+    font-family: 'Comic Neue', cursive;
+    color: #333; /* Ensure text is visible in light mode */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.3s, color 0.3s;
+}
+
+.skills-block:hover {
+    transform: translateY(-3px);
+}
+
+.skills-images {
+    flex: 1; /* Take up less space for the images */
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+    gap: 1rem; /* Add spacing between images */
+}
+
+.skills-photo {
+    width: 100%; /* Make the images responsive */
+    max-width: 300px; /* Limit the maximum width of the images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+  /* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #000;
+    z-index: 1; /* Ensure the image/video is below the buttons */
+    position: relative; /* Keep the image/video in the stacking context */
+}
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    z-index: 1000; /* Ensure the spinner is above the image/video */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #ea1d1d;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001; /* Ensure the close button is above the image/video */
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 1s forwards; /* Fade-in animation */
+    animation-delay: 1s; /* Delay the animation by 1 second */
+}
+
+.close:hover {
+    color: #ff4444;
+}
+
+/* Download Button */
+.download-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001; /* Ensure the download button is above the image/video */
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 1s forwards; /* Fade-in animation */
+    animation-delay: 1s; /* Delay the animation by 1 second */
+}
+
+.download-btn:hover {
+    background-color: #45a049;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+  
+  /* Responsive styles */
+@media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.5rem;
+    }
+  
+    .hero {
+      padding: 3rem 1rem 1.5rem;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+      padding-left: 0.75rem;
+    }
+  
+    .card {
+      padding: 1.2rem 1.5rem;
+      font-size: 0.95rem;
+    }
+  
+    .personality-container,
+    .personality-row {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .personality-photo {
+      max-width: 90%;
+    }
+  
+    .profile-photo,
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .project-card,
+    .certificate-card {
+      width: 90vw;
+    }
+  
+    /* Contact Section Styles */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Center the buttons vertically */
+    gap: 1.5rem; /* Add spacing between buttons */
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white; /* Default text color */
+    background-color: #4caf50; /* Default button color */
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.contact-button i {
+    margin-right: 0.5rem; /* Add spacing between icon and text */
+    font-size: 1.2rem;
+}
+
+.contact-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-button:active {
+    transform: translateY(0); /* Reset lift effect on click */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode Styles */
+body.dark-mode .contact-button {
+    background-color: #555; /* Dark mode button color */
+    color: #f4f4f4; /* Light text for dark mode */
+}
+
+body.dark-mode .contact-button:hover {
+    background-color: #777; /* Slightly lighter color on hover in dark mode */
+}
+    
+  
+    .upload-section input,
+    .upload-section textarea,
+    .upload-section button {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero {
+      padding: 2.5rem 1rem 1rem;
+    }
+  
+    h2 {
+      font-size: 1.3rem;
+    }
+  
+    .card {
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  
+    .navbar a, .navbar button {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+    }
+  
+    .modal-content {
+      max-width: 95%;
+      max-height: 85%;
+    }
+  
+    .close {
+      font-size: 32px;
+      top: 15px;
+      right: 20px;
+    }
+  }
+  
