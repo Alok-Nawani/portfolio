@@ -169,3 +169,31 @@ particlesJS("particles-js", {
     retina_detect: true
     
 });
+
+document.getElementById('menu-toggle').addEventListener('click', function () {
+  const menuContent = document.getElementById('menu-content');
+  menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
+});
+
+document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+  document.body.classList.toggle('dark-mode');
+});
+
+const backToTopButton = document.getElementById('back-to-top');
+
+// Show the button when the user scrolls down
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 300) {
+    backToTopButton.style.display = 'flex';
+  } else {
+    backToTopButton.style.display = 'none';
+  }
+});
+
+// Scroll back to the top when the button is clicked
+backToTopButton.addEventListener('click', function () {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});

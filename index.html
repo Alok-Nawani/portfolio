@@ -39,7 +39,20 @@
     <div id="caption"></div>
 </div>
   
-  
+<div class="mobile-menu">
+  <button id="menu-toggle" class="menu-button">☰ Menu</button>
+  <nav id="menu-content" class="menu-content">
+    <a href="#profile">Profile</a>
+    <a href="#education">Education</a>
+    <a href="#personality">Personality</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#resume">Resume</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact">Contact</a>
+    <button id="dark-mode-toggle" class="menu-dark-mode">🌓 Dark Mode</button>
+  </nav>
+</div>
   
 
   <!-- Navigation -->
@@ -92,6 +105,8 @@
           <img src="assets/more-about-me.jpg" alt="Alok Nawani" class="personality-photo">
         </div>
       </section>
+
+      <button id="back-to-top" class="back-to-top">↑</button>
 
       <section x-show="current === 'education'" x-transition>
         <div class="personality-container">
