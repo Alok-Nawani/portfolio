@@ -28,23 +28,8 @@
     </div>
   </header>
 
-  <button id="back-to-top" class="back-to-top">↑</button>
-
-  <div class="mobile-menu">
-    <button id="menu-toggle" class="menu-button">☰ Menu</button>
-    <nav id="menu-content" class="menu-content">
-      <a href="#profile">Profile</a>
-      <a href="#education">Education</a>
-      <a href="#personality">Personality</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#resume">Resume</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#contact">Contact</a>
-      <button id="dark-mode-toggle" class="menu-dark-mode">🌓 Dark Mode</button>
-    </nav>
-  </div>
-
+  <div x-data="{ showMenu: true }" class="relative">
+  
   
   <!-- Modal for Zoomed Media -->
   <div id="mediaModal" class="modal">
@@ -56,28 +41,18 @@
     <div id="caption"></div>
 </div>
   
-<div class="mobile-menu">
-  <button id="menu-toggle" class="menu-button">☰ Menu</button>
-  <nav id="menu-content" class="menu-content">
-    <a href="#profile">Profile</a>
-    <a href="#education">Education</a>
-    <a href="#personality">Personality</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#resume">Resume</a>
-    <a href="#certificates">Certificates</a>
-    <a href="#contact">Contact</a>
-    <button id="dark-mode-toggle" class="menu-dark-mode">🌓 Dark Mode</button>
-  </nav>
-</div>
-  
 
   <!-- Navigation -->
   <nav class="navbar">
-    <template x-for="item in sections">
-      <a :class="{ 'active': current === item.key }" @click="current = item.key" x-text="item.name"></a>
-    </template>
-    <button @click="toggleDarkMode">🌓</button>
+    <button @click="showMenu = !showMenu" class="menu-button">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div x-show="showMenu" class="menu">
+      <template x-for="item in sections">
+        <a :class="{ 'active': current === item.key }" @click="current = item.key; showMenu = false" x-text="item.name"></a>
+      </template>
+      <button @click="toggleDarkMode" class="menu-dark-mode">🌓</button>
+    </div>
   </nav>
 
   <!-- Sections -->
@@ -275,23 +250,551 @@
           </div>
         </div>
       </section>
+
+      <section x-show="current === 'activities'" x-transition>
+        <div class="activities-container">
+          <!-- Buttons for Subsections -->
+          <div class="activities-buttons">
+            <button @click="currentActivity = 'profileSheet'" :class="{ 'active': currentActivity === 'profileSheet' }">Profile Sheet</button>
+            <button @click="currentActivity = 'classPresentation'" :class="{ 'active': currentActivity === 'classPresentation' }">Class Presentation</button>
+            <button @click="currentActivity = 'movieReview'" :class="{ 'active': currentActivity === 'movieReview' }">Movie Review</button>
+            <button @click="currentActivity = 'groupDiscussion'" :class="{ 'active': currentActivity === 'groupDiscussion' }">Group Discussion</button>
+          </div>
       
-      <section x-show="current === 'contact'" x-transition>
-        <div class="contact-container">
-            <a href="mailto:aloknawani23@gmail.com" target="_blank" class="contact-button">
-                <i class="fas fa-envelope"></i> Gmail
-            </a>
-            <a href="https://github.com/Alok-Nawani" target="_blank" class="contact-button">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" class="contact-button">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="https://instagram.com/im_alok23" target="_blank" class="contact-button">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
-        </div>
-    </section>
+          <!-- Subsection Content -->
+          <div class="activities-content">
+          
+           <!-- Profile Sheet -->
+<div x-show="currentActivity === 'profileSheet'" x-transition>
+  <h3 class="profile-sheet-title">Profile Sheet</h3>
+  <p class="profile-sheet-intro">
+    This section contains details about my profile sheet, showcasing my achievements and personal details.
+  </p>
+
+  <!-- Profile Sheet Content -->
+  <div class="profile-sheet-content">
+    <!-- Profile Items -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>1. What's your career objective?</h4>
+<p>My career objective is to:</p>
+<ul>
+  <li>My career objective is to seamlessly merge creativity with technology by pursuing a career in web development and digital design. I aim to craft innovative, engaging, and user-centric digital experiences that not only solve real-world problems but also inspire and connect users through design and functionality. I aspire to continuously learn, evolve, and contribute meaningfully to the digital space while pushing the boundaries of user experience.</li>
+</ul>
+         </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/career-objective.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>2. Why do you want to be an animator or designer? Elaborate reason.</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>I want to be a designer because it allows me to blend my creativity with technical skills to create experiences that are both functional and visually captivating. Growing up surrounded by the natural beauty of Jammu and Kashmir, I developed an appreciation for aesthetics, balance, and storytelling. Design enables me to express ideas, solve problems creatively, and craft intuitive interfaces that make a real difference in users' lives. It’s not just about making things look good; it's about creating meaningful, immersive journeys.</li>
+        </ul>      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/animator-designer-reason.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>3. Write about projects or internships you have done/are doing along with the learning.</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>Text-to-Speech & Speech-to-Text for Indian Languages (Python):
+            Developed a multilingual TTS-STT platform, enhancing my skills in Python programming, machine learning algorithms, and Indian language processing.
+            Learning: Improved my problem-solving abilities, understanding of speech recognition systems, and optimization techniques.</li>
+          <li>E-Portfolio Website (HTML, CSS, JavaScript):
+            Designed and developed a personal portfolio inspired by Spotify's modern aesthetic, focusing on clean design, animations, and responsiveness.
+            Learning: Strengthened my front-end development skills and learned about UI/UX best practices.</li>
+          <li>Agriculture Quiz & Job Learning Platform (Gemini API Integration):
+            Created an educational platform featuring quizzes and career guidance for agriculture, leveraging AI integration.
+            Learning: Gained experience in API integration, real-time data handling, and educational content creation.</li>
+        </ul>      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/projects-internships.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>4. What would you consider a significant achievement in your life and why?</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>A significant achievement for me was leading my school as the School Captain, a role that required leadership, responsibility, and teamwork. It was a proud moment because it validated my ability to inspire peers, coordinate teams, and manage responsibilities effectively — qualities that continue to guide my academic and professional pursuits.</li>
+        </ul>      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/significant-achievement.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Failure Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>5. Write about a failure of yours which you consider to share. What have you learned from it?</h4>
+        <p>Here it is:</p>
+<ul>
+  <li>During an early group project in college, I underestimated the importance of time management and task delegation, leading to last-minute work and a rushed submission.
+    Learning: I realized the critical importance of planning, communication, and early preparation in teamwork, which has significantly improved my project management skills since then.</li>
+</ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/failure.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Strengths Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>6. What are your strengths? Write one or two instances where you have demonstrated your strengths.</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>Strengths: Creativity, Attention to Detail, Leadership, Communication Skills</li>
+          <li>Instances:
+            
+            As a Dance Leader, I designed and coordinated complex choreography for school performances, demonstrating creativity and leadership under pressure.
+            
+            In my E-Portfolio Website project, my perfectionist mindset ensured a polished, user-friendly design that stood out among peers.</li>
+        
+
+            </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/strengths.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Weaknesses Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>7. Write about your weaknesses. What are you doing to overcome your weaknesses?</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>Weakness:
+            Sometimes, I tend to be overly self-critical, spending extra time refining details.</li>
+        <li>Overcoming it:
+          I have started setting clear timelines for each task and practicing "progress over perfection" — balancing high standards with efficiency to avoid unnecessary delays.</li>
+          </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/weaknesses.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Difficult Moment Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>8. What is the most difficult moment that you have faced in your life so far? What qualities helped you to overcome the moment?</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>The transition from high school to university life was challenging — adapting to a new academic environment, city, and expectations.
+          </li>
+          <li>Qualities that helped: Resilience, adaptability, and my passion for learning allowed me to stay motivated, make new friends, and quickly adjust to the new phase of life. </li>
+        </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/difficult-moment.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Extracurricular Activities Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>9.Apart from academics, what else are you interested in? Make a separate list in terms of extracurricular activities, sports, and any other interests.</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>Extracurricular Activities:
+
+            Photography (capturing nature, events, and candid moments)
+            
+            Playing Piano and Guitar (musical expression)</li>
+
+          <li>Sports:
+
+            Cricket
+
+            Football</li>
+
+            <li>Other Interests:
+
+              Gaming (immersive storytelling, strategy games)
+              
+              UI/UX Designing and exploring new trends in web development</li>
+        </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/extracurricular-activities.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Passion Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>10. Give an example of an area, concept, or thing that you are absolutely passionate about.</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>I am absolutely passionate about web development and UI/UX design. I love the process of transforming ideas into interactive digital products that are visually stunning and user-centric. The intersection of creativity and technology fascinates me, and I find deep satisfaction in crafting experiences that engage and delight users.</li>
+        </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/passion.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Self-Description Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>11. Describe yourself as an individual in 5 lines.</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>I am a creative and detail-oriented individual who thrives on innovation and challenges.</li>
+          <li> I believe in continuous growth, learning, and striving for excellence in everything I do.</li>
+           <li> With a passion for design and technology, I aim to create meaningful digital experiences.</li>
+          <li>I value collaboration, leadership, and clear communication.</li>
+        <li> Resilience and adaptability define my journey, both personally and professionally.
+            
+            </li>
+        </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/self-description.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Enjoy Working With Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>12. What kinds of people do you enjoy working with?</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>I enjoy working with individuals who are creative, collaborative, open-minded, and passionate about what they do. People who are willing to share ideas, communicate openly, and work towards common goals inspire me and enhance the overall team synergy.</li>
+        </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/enjoy-working-with.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Don't Want to Work With Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>13. What kind of people you don't want to work with? What would you do if they became your senior in your dream job?</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>I find it challenging to work with individuals who are closed-minded, uncooperative, or resistant to new ideas.
+            If such a person became my senior, I would maintain professionalism, focus on mutual goals, adapt respectfully to their leadership style, and find constructive ways to communicate ideas to ensure a positive working relationship.</li>
+        </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/dont-want-to-work-with.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+     <!-- First Job Expectations Section -->
+     <div class="profile-item">
+      <div class="profile-description">
+        <h4>14. What do you expect from your first job? Prioritize and write in order.</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>Learning and skill development opportunities </li>
+          <li>Exposure to real-world projects and challenges          </li>
+          <li>Supportive and growth-oriented work culture</li>
+          <li>Mentorship from experienced professionals</li>
+          <li>Fair compensation</li>
+          <li>Opportunities for creativity and innovation</li>
+
+        </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/first-job-expectations.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Dissatisfaction in Performance Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>15. In the past year, what have you been dissatisfied about in your performance?</h4>
+        <p>Here are some areas where I felt dissatisfied and the steps I am taking to improve:</p>
+        <ul>
+          <li>Over the past year, I felt that I could have participated in more coding competitions and hackathons to challenge myself further. Although I focused on building my skills and portfolio, I aim to engage more actively in competitions to enhance my problem-solving agility.</li>
+        </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/dissatisfaction-performance.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Verbal Communication Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>16. Rate yourself out of 5 in verbal communication. What are you doing to improve your communication skills?</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>I would rate myself 4 out of 5 in verbal communication.</li>
+          <li>To continuously improve, I actively participate in group discussions, deliver presentations, and practice public speaking to refine my clarity, confidence, and articulation.</li>
+
+        </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/verbal-communication.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Role Model Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>17. Who is your role model? What qualities of that person would you like to see in your personality and why?</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>Role Model: My father.</li>
+          <li>Qualities I admire: His resilience, adaptability, work ethic, and ability to stay calm and solution-focused in challenging situations. I aspire to embody these qualities in my personal and professional life to navigate challenges effectively and maintain balance.</li>
+
+        </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/role-model.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Friends Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>18. Write a few lines about your friends. Do you think they help/may help you in achieving your goals? If yes, how? If no, why do you accompany them?</h4>
+        <p>Here it is:</p>
+        <ul>
+          <li>My friends are supportive, motivated, and creatively driven individuals.
+            Yes, they help me achieve my goals by encouraging me to push my limits, offering constructive feedback, collaborating on projects, and inspiring me through their own achievements. Our shared ambitions create a positive, motivating environment for growth.</li>
+        </ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/friends.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Leadership Qualities Section -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>19. Write 3 leadership qualities. How many do you possess? Write an instance where you have applied those qualities.</h4>
+        <p>Here it is:</p>
+<ul>
+  <li>Communication</li>
+  <li>Decision-Making</li>
+  <li>Team Motivation</li>
+  <li>I possess all three.
+    Instance:
+    As School Captain, I communicated effectively with both students and teachers, made important decisions for event planning, and kept the teams motivated, ensuring smooth execution of school events and student initiatives.</li>
+
+</ul>
+      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/leadership-qualities.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+
+    <!-- Repeat similar structure for all 20 items -->
+    <!-- Example for the 20th item -->
+    <div class="profile-item">
+      <div class="profile-description">
+        <h4>20. Tell us something more about yourself or introduce yourself.</h4>
+        <p>More about me:</p>
+        <ul>
+          <li>I am Alok Nawani, a passionate web developer and digital designer from Jammu and Kashmir, currently pursuing B.Tech in Computer Science Engineering at Graphic Era Hill University. A perfectionist by nature, I strive to create innovative, engaging digital experiences. Beyond technology, I find creative expression through photography, music, and gaming. With leadership experience, a resilient mindset, and a deep curiosity for learning, I am excited to shape a future that harmonizes creativity, functionality, and impact.</li>
+        </ul>      </div>
+      <div class="profile-video">
+        <video controls>
+          <source src="assets/videos/introduction.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
+      
+                <!-- Class Presentation -->
+<div x-show="currentActivity === 'classPresentation'" x-transition>
+  <div class="activity-item">
+    <div class="activity-description">
+      <h3>Class Presentation</h3>
+      <p>
+        This section showcases my class presentation on a topic of interest, highlighting my research and presentation skills.
+      </p>
+      <ul>
+        <li><strong>Topic:</strong>  Creation of a Startup Company — Healthify</li>
+        <li><strong>Concept:</strong></li>
+        <li>For my presentation, I conceptualized and designed a new wellness brand called Healthify, focused on promoting natural health solutions. Our flagship product, Aloe Glow, is crafted from 100% pure aloe vera to ensure authentic, chemical-free skincare and wellness benefits.</li>
+        <li><strong>Key Points:</strong> </li>
+        <li>Company Vision: To redefine everyday wellness by offering natural, sustainable, and effective aloe vera-based products.</li>
+        <li>Product Line: Launching with Aloe Glow — a multi-purpose aloe vera gel aimed at skincare, haircare, and holistic healing, followed by a range of health and beauty supplements.</li>
+        <li>Market Research: Identified the growing consumer demand for organic and natural personal care products.</li>
+        <li>Business Strategy: Focused on eco-friendly packaging, transparent ingredient sourcing, and community-driven brand engagement.</li>
+        <li>Future Plans: Expansion into wellness beverages, herbal supplements, and global e-commerce reach.</li>
+        <li><strong>Outcome:</strong></li>
+        <li>Through this project, I enhanced my entrepreneurial thinking, creative branding skills, and business presentation abilities.</li>
+         <li>It also strengthened my public speaking, strategic planning, and market analysis skills — essential tools for any future leader or innovator.</li>
+      </ul>
+    </div>
+    <div class="activity-video">
+      <video controls>
+        <source src="assets/videos/class-presentation.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="ppt-options">
+        <!-- Button to View the PPT/PDF -->
+        <a href="assets/presentations/class-presentation.pdf" target="_blank">
+          <button class="view-btn">View Presentation (PPT)</button>
+        </a>
+        <!-- Button to Download the PPT/PDF -->
+        <a href="assets/presentations/class-presentation.pdf" download>
+          <button class="download-btn">Download Presentation (PPT)</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Movie Review -->
+<div x-show="currentActivity === 'movieReview'" x-transition>
+  <div class="activity-item">
+    <div class="activity-description">
+      <h3>Movie Review</h3>
+      <p>
+        Here, I share my thoughts and reviews on movies that have inspired or entertained me.
+      </p>
+      <ul>
+        <li><strong>Movie:</strong> The Shawshank Redemption </li>
+        <li><strong>Review:</strong> Even under the most oppressive circumstances, human spirit and hope can triumph.</li>
+        <li>The Shawshank Redemption is a masterpiece that goes beyond being just a prison-break movie; it is a profound study of human spirit, endurance, and freedom.
+          The storytelling is subtle yet powerful, and every scene, every character, carries layers of meaning. Andy's quiet determination, Red’s transformation from a man of despair to one of belief, and the exploration of institutionalization in prison life are portrayed brilliantly.
+          The movie's cinematography, screenplay, and Morgan Freeman's voiceover narration elevate the emotional depth.
+          Personally, I was most impacted by how the movie treats the passage of time — how patience, silent perseverance, and faith can slowly carve paths through seemingly immovable barriers.
+          It's a film that leaves you introspecting about life, choices, freedom, and the invisible cages we all sometimes live in.</li>
+        <li><strong>Takeaway:</strong> Hope is not naive — it is a discipline, a powerful tool for survival and growth.</li>
+        <li>The most important learning I take away from The Shawshank Redemption is the power of resilience and hope.
+          No matter how difficult the situation, consistent efforts combined with inner belief can eventually lead to success.
+          It teaches that true freedom is often a mental state — that even if circumstances are controlling us externally, maintaining hope keeps our spirit unbroken.
+          The movie also emphasizes patience, intelligence, strategic thinking, and emotional strength. Andy's journey shows that one doesn't need to rebel loudly to make a difference; quiet, focused action can change one’s destiny.
+          Lastly, it reminds me how important it is to not lose oneself to systems, failures, or disappointments — and to continue dreaming beyond temporary confinements.</li>
+          <li><strong>Related concept taught in classroom :</strong></li>
+          <li>Psychological Resilience:
+            In psychology classes, we learned about resilience — the ability to adapt well to adversity, trauma, or stress. Andy's character is a textbook example of psychological resilience in action.</li>
+            <li>Institutionalization and Learned Helplessness:
+              Sociology and psychology taught us how long-term institutionalization (like living in prison for decades) can make individuals fearful of freedom and dependent on a structured environment, as seen through the character Brooks. This is directly linked to the concept of learned helplessness, where repeated exposure to uncontrollable situations leads individuals to stop trying to change their circumstances.</li>
+              <li>Strategic Planning and Problem Solving:
+                In management and logical reasoning topics, we discussed goal setting, planning, and executing a vision over time. Andy’s long-term vision and strategic execution to escape the prison align closely with those frameworks.</li>
+                <li>Hope Theory (Positive Psychology):
+                  Hope, as studied under positive psychology, consists of having goals, the willpower to pursue them, and the pathways to achieve them. Andy epitomizes this theory throughout the movie.</li>
+      </ul>
+    </div>
+    <div class="activity-video">
+      <div class="video-wrapper">
+        <video controls>
+          <source src="assets/videos/VIDEO-2025-04-28-21-32-00.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video-wrapper">
+        <video controls>
+          <source src="assets/videos/VIDEO-2025-04-28-21-35-00.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+</div>
+</div>
+<!-- Group Discussion -->
+<div x-show="currentActivity === 'groupDiscussion'" x-transition>
+  <div class="activity-item">
+    <div class="activity-description">
+      <h3>Group Discussion</h3>
+      <p>
+        This section highlights my experiences and learnings from participating in group discussions.
+      </p>
+      <ul>
+        <li><strong>Topic:</strong>Hard Work vs Smart Work</li>
+        <li><strong>Concept:</strong>In the group discussion, I advocated strongly in favor of Hard Work over Smart Work, emphasizing that consistent effort, perseverance, and dedication are irreplaceable ingredients in achieving long-term success.</li>
+        <li><strong>Key Points:</strong>"Success comes before work only in the dictionary."</li>
+        <li>Importance of Foundation: I argued that while smart strategies can optimize processes, they are only effective when backed by hard work, solid skills, and continuous effort.</li>
+        <li>Sustainability: Hard work builds resilience, discipline, and deeper understanding, making success more sustainable in the long run.</li> 
+        <li>Real-World Examples: I cited real-life personalities such as Dr. A.P.J. Abdul Kalam and Sachin Tendulkar, who achieved greatness primarily through relentless hard work and perseverance.</li>
+        <li>Balanced View: I acknowledged that smart work complements hard work, but stressed that without sincere effort, even the smartest plans would fail to deliver results.</li>
+        <li>Handling Counterarguments: During the discussion, I listened carefully to opposing views and responded thoughtfully, maintaining respect while firmly defending my perspective.</li>
+        <li><strong>Outcome:</strong></li>
+        <li>Participating in this group discussion significantly improved my communication, active listening, and critical thinking skills.</li>
+        <li>It also enhanced my ability to construct logical arguments under pressure and strengthened my confidence in public speaking settings.</li>
+      </ul>
+    </div>
+    <div class="activity-video">
+      <video controls>
+        <source src="assets/videos/group-discussion.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
       
 
         <template x-if="item.key === 'projects'">

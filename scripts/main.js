@@ -1,6 +1,7 @@
 function portfolioApp() {
   return {
     current: 'profile',
+    currentActivity: 'profileSheet', // Default subsection for Activities
     darkMode: false,
     newUploadDescription: '',
     uploads: JSON.parse(localStorage.getItem('portfolioUploads') || '{}'),
@@ -8,23 +9,23 @@ function portfolioApp() {
     sections: [
       { key: 'profile', name: 'Profile', description: 'I am a B.Tech student with a passion for web development and digital design. Skilled in Java, HTML, and CSS, I enjoy bringing creativity and functionality together to craft engaging user experiences. With a perfectionist mindset, I continuously refine designs to enhance interaction and aesthetics. My goal is to create innovative digital experiences that seamlessly blend creativity with technology.' },
       { key: 'education', name: 'Education', description: 'A little about my education.' },
-       {
-          key: 'personality',
-          name: 'Personality',
-          description: `Traits that define me.<br>
-          Ambitious & Driven | Creative & Expressive | Detail-Oriented & Perfectionist | Adaptable & Curious | Energetic & Enthusiastic | Resilient & Determined | Balanced & Thoughtful | Confident & Visionary Leader`
-        },
-        
-      { key: 'skills', name: 'Skills', description: 'My skills and expertise.' },        
+      {
+        key: 'personality',
+        name: 'Personality',
+        description: `Traits that define me.<br>
+        Ambitious & Driven | Creative & Expressive | Detail-Oriented & Perfectionist | Adaptable & Curious | Energetic & Enthusiastic | Resilient & Determined | Balanced & Thoughtful | Confident & Visionary Leader`
+      },
+      { key: 'activities', name: 'Activities', description: 'My extracurricular activities.' },
+      { key: 'skills', name: 'Skills', description: 'My skills and expertise.' },
       { key: 'projects', name: 'Projects', description: 'A showcase of my development projects.' },
       { key: 'resume', name: 'Resume', description: 'Downloadable resume with qualifications and skills.' },
       { key: 'certificates', name: 'Certificates', description: 'My verified certifications and achievements.' },
       { key: 'contact', name: 'Contact', description: 'Get in touch with me.' },
     ],
 
-toggleDarkMode() {
-  this.darkMode = !this.darkMode;
-},
+    toggleDarkMode() {
+      this.darkMode = !this.darkMode;
+    },
 
 
 
@@ -74,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadingSpinner = document.getElementById("loadingSpinner");
 
   // Add click event to all images and videos
-  document.querySelectorAll("img, video").forEach(media => {
+  document.querySelectorAll("img").forEach(media => {
       media.style.cursor = "zoom-in";
       media.addEventListener("click", function () {
           modal.style.display = "block";
@@ -183,27 +184,17 @@ const backToTopButton = document.getElementById('back-to-top');
 
 // Show the button when the user scrolls down
 window.addEventListener('scroll', function () {
-  if (window.scrollY > 300) {
-    backToTopButton.style.display = 'flex';
-  } else {
-    backToTopButton.style.display = 'none';
-  }
+if (window.scrollY > 300) {
+  backToTopButton.style.display = 'flex';
+} else {
+  backToTopButton.style.display = 'none';
+}
 });
 
 // Scroll back to the top when the button is clicked
 backToTopButton.addEventListener('click', function () {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
+window.scrollTo({
+  top: 0,
+  behavior: 'smooth'
 });
-
-document.getElementById('menu-toggle').addEventListener('click', function () {
-  const menuContent = document.getElementById('menu-content');
-  menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
-});
-
-// Toggle dark mode
-document.getElementById('dark-mode-toggle').addEventListener('click', function () {
-  document.body.classList.toggle('dark-mode');
 });

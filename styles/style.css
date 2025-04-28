@@ -815,89 +815,479 @@ body.dark-mode .contact-button:hover {
   transform: scale(1.1);
 }
 
-/* Hide the desktop navbar on smaller screens */
+/* Default Menu Layout (Horizontal for Desktop) */
+.menu {
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Mobile Menu Layout (Vertical) */
 @media (max-width: 768px) {
-  .navbar {
-    display: none;
+  .menu {
+    flex-direction: column; /* Change to vertical layout */
+    align-items: flex-start; /* Align items to the left */
+    gap: 0.5rem; /* Reduce spacing between items */
+    padding: 1rem;
+    background-color: rgb(90, 29, 211); /* Optional: Add a background color */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
   }
 
-  .mobile-menu {
-    display: block;
+  .menu a {
+    width: 100%; /* Make links take full width */
+    text-align: left; /* Align text to the left */
+    padding: 0.5rem 1rem; /* Add padding for better spacing */
+  }
+
+  .menu-dark-mode {
+    width: 100%; /* Make the dark mode button take full width */
+    text-align: left; /* Align text to the left */
+    padding: 0.5rem 1rem; /* Add padding for better spacing */
   }
 }
 
-/* Show the desktop navbar on larger screens */
-@media (min-width: 769px) {
-  .mobile-menu {
-    display: none;
-  }
-
-  .navbar {
-    display: flex;
-  }
-}
-
-.menu-content {
-  display: none; /* Hidden by default */
-  position: absolute;
-  top: 50px;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+/* Activities Section */
+.activities-container {
   padding: 1rem;
-  text-align: right;
 }
 
-.menu-content a {
-  display: block;
-  color: #673ab7;
-  text-decoration: none;
-  margin: 0.5rem 0;
-  font-weight: bold;
+.activities-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.menu-content a:hover {
-  color: #512da8;
-}
-
-.menu-dark-mode {
-  background: transparent;
-  border: none;
-  color: #673ab7;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 0.5rem;
-}
-
-.menu-dark-mode:hover {
-  color: #512da8;
-}
-
-.back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #333;
+.activities-buttons button {
+  background-color: #673ab7;
   color: white;
   border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  font-weight: bold;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
   cursor: pointer;
-  display: none; /* Hidden by default */
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.back-to-top:hover {
-  background-color: #555;
-  transform: scale(1.1);
+.activities-buttons button:hover {
+  background-color: #512da8;
+}
+
+.activities-buttons button.active {
+  background-color: #512da8;
+  font-weight: bold;
+}
+
+.activities-content {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Profile Sheet Section */
+.profile-sheet-title {
+  font-size: 2rem;
+  font-family: 'Comic Neue', cursive; /* Use a unique font */
+  color: #512da8;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.profile-sheet-intro {
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-sheet-content {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Profile Item Box */
+.profile-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  background: linear-gradient(135deg, #e0f7fa, #e1bee7); /* Unique gradient background */
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Description Section */
+.profile-description {
+  flex: 1;
+}
+
+.profile-description h4 {
+  font-size: 1.5rem;
+  font-family: 'Comic Neue', cursive; /* Unique font for headings */
+  color: #673ab7;
+  margin-bottom: 0.5rem;
+}
+
+.profile-description p {
+  font-size: 1rem;
+  font-family: 'Roboto Slab', serif;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+/* Profile Description Bullets */
+.profile-description ul {
+  margin-left: 1.5rem; /* Indent the bullets */
+  margin-top: 0.5rem; /* Add spacing above the list */
+  margin-bottom: 1rem; /* Add spacing below the list */
+  list-style-type: disc; /* Use disc bullets */
+}
+
+.profile-description ul li {
+  margin-bottom: 0.5rem; /* Add spacing between list items */
+  line-height: 1.6; /* Improve readability */
+}
+
+/* Video Section */
+.profile-video {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-video video {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-video video:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+
+}
+
+/* Activities Section */
+.activities-container {
+  padding: 1rem;
+}
+
+.activities-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.activities-buttons button {
+  background-color: #673ab7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.activities-buttons button:hover {
+  background-color: #512da8;
+}
+
+.activities-buttons button.active {
+  background-color: #512da8;
+  font-weight: bold;
+}
+
+.activities-content {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Activity Item Layout */
+.activity-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.activity-description {
+  flex: 1; /* Take up available space */
+}
+
+.activity-description h3 {
+  font-size: 1.5rem;
+  color: #673ab7;
+  margin-bottom: 0.5rem;
+}
+
+.activity-description p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}
+
+.activity-video {
+  flex: 1; /* Take up available space */
+}
+
+.activity-video video {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Activities Section */
+.activities-container {
+  padding: 1rem;
+}
+
+.activities-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.activities-buttons button {
+  background-color: #673ab7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.activities-buttons button:hover {
+  background-color: #512da8;
+  transform: scale(1.05);
+}
+
+.activities-buttons button.active {
+  background-color: #512da8;
+  font-weight: bold;
+}
+
+/* Activity Item Layout */
+.activity-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  background: linear-gradient(135deg, #f3e7fe, #e3d1fc);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Description Section */
+.activity-description {
+  flex: 1;
+}
+
+.activity-description h3 {
+  font-size: 1.8rem;
+  color: #673ab7;
+  margin-bottom: 0.5rem;
+}
+
+.activity-description p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.activity-description ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.activity-description ul li {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* Video Section */
+.activity-video {
+  flex: 1;
+}
+
+.activity-video video {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.activity-video video:hover {
+  transform: scale(1.05);
+}
+
+/* Activity Item Box */
+.activity-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  background: linear-gradient(135deg, #e0f7fa, #e1bee7); /* Gradient background */
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Description Section */
+.activity-description {
+  flex: 1;
+}
+
+.activity-description h3 {
+  font-size: 1.8rem;
+  font-family: 'Comic Neue', cursive; /* Unique font for headings */
+  color: #673ab7;
+  margin-bottom: 0.5rem;
+}
+
+.activity-description p {
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.activity-description ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.activity-description ul li {
+  font-size: 1rem;
+  font-family:'Roboto Slab', serif;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* Activity Video Section */
+.activity-video {
+  flex: 1; /* Take up available space */
+  display: flex;
+  justify-content: flex-end; /* Push the video box to the right */
+}
+
+.activity-video video {
+  width: 100%;
+  max-width: 400px; /* Increase the size of the video box */
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Add a shadow for better visibility */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth zoom effect */
+}
+
+.activity-video video:hover {
+  transform: scale(1.1); /* Zoom the video box on hover */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+/* Adjust the layout for smaller screens */
+@media (max-width: 768px) {
+  .activity-item {
+    flex-direction: column; /* Stack the description and video vertically */
+  }
+
+  .activity-video {
+    justify-content: center; /* Center the video box on smaller screens */
+  }
+
+  .activity-video video {
+    max-width: 100%; /* Ensure the video fits within the screen */
+  }
+}
+
+.activity-video {
+  display: flex;
+  flex-direction: column; /* Stack videos vertically */
+  gap: 1rem; /* Add space between videos */
+}
+
+.video-wrapper {
+  width: 100%; /* Ensure videos take up full width of the container */
+  display: flex;
+  justify-content: center; /* Center the videos horizontally */
+}
+
+.video-wrapper video {
+  max-width: 100%; /* Ensure videos are responsive */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better appearance */
+}
+
+.ppt-download {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.ppt-download .download-btn {
+  background-color: #673ab7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.ppt-download .download-btn:hover {
+  background-color: #512da8;
+}
+
+.ppt-options {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.ppt-options .view-btn,
+.ppt-options .download-btn {
+  background-color: #673ab7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.ppt-options .view-btn:hover,
+.ppt-options .download-btn:hover {
+  background-color: #512da8;
 }
